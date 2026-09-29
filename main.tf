@@ -1,15 +1,13 @@
 resource "aws_vpc" "day1" {
   cidr_block = "10.0.0.0/16"
-  require_dns_support   = true
   tags = {
     Name = "day1-vpc"
   }
 }
 # subnet
-resource "aws_subnet""day1" {
+resource "aws_subnet" "day1" {
   vpc_id            = aws_vpc.day1.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
   tags = {
     Name = "day1-subnet"
   }
@@ -59,11 +57,10 @@ resource "aws_security_group" "day1" {
 }
 
 resource "aws_instance" "day1" {
-  ami           = var.ami_id # Amazon Linux 2 AMI
+  ami           = var.ami_id 
   instance_type = var.instance_type
   subnet_id     = aws_subnet.day1.id
-  security_groups = [aws_security_group.day1.name]
-
+  security_groups = [aws_security_group.day1.id]
   tags = {
     Name = "day1-instance"
   }
