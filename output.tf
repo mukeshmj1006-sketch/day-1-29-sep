@@ -11,4 +11,5 @@ output "vpc_id" {
 
 output "instance_type" {
   value = aws_instance.day1.instance_type
+  description = " EC2 instance type"
 }
