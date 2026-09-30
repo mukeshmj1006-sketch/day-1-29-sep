@@ -8,3 +8,7 @@ output "instance_public_ip" {
 output "vpc_id" {
   value = aws_vpc.day1.id
 }
+
+output "instance_type" {
+  value = aws_instance.day1.instance_type
+}
